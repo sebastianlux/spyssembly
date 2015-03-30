@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace AssemblyInfo
+namespace AssemblyInfo.Extensions
 {
     public static class AssemblyExtensions
     {
@@ -37,11 +32,14 @@ namespace AssemblyInfo
 
         private static TAttributeValueType GetAttributeValue<TAttribute, TAttributeValueType>(this Assembly assembly, Func<TAttribute, TAttributeValueType> func) where TAttribute : Attribute
         {
-            var attribute = assembly.GetCustomAttribute<TAttribute>();
-
-            if(attribute != null)
+            if (assembly != null)
             {
-                return func(attribute);
+                var attribute = assembly.GetCustomAttribute<TAttribute>();
+
+                if (attribute != null)
+                {
+                    return func(attribute);
+                }
             }
 
             return default(TAttributeValueType);
