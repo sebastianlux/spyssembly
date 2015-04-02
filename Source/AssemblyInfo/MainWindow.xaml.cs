@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,7 @@ namespace AssemblyInfo
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    [Export]
     public partial class MainWindow
     {
         public MainWindow()

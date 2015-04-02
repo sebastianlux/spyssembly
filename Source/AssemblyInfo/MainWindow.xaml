@@ -10,9 +10,6 @@
                      Title="AssemblyInfo"
                      Height="500" 
                      Width="300">
-    <Window.DataContext>
-        <local:MainWindowViewModel />
-    </Window.DataContext>
     <Grid Background="Transparent" Margin="10">
         <views:AssemblyInfoView DataContext="{Binding AssemblyInfoViewModel}" />
         <views:DropContainerView DataContext="{Binding DropContainerViewModel}" />

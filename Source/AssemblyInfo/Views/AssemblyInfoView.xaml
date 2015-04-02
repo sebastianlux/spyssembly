@@ -5,23 +5,28 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" 
-                   Text="PRODUCT VERSION" />
-        <TextBlock Grid.Row="1" Text="{Binding ProductVersion}" />
-        <TextBlock Grid.Row="2"
-                   Text="FILE VERSION" />
-        <TextBlock Grid.Row="3" Text="{Binding FileVersion}" />
-        <TextBlock Grid.Row="4"
-                   Text="INFORMATIONAL VERSION" />
-        <TextBlock Grid.Row="5" Text="{Binding InformationalVersion}" />
-    </Grid>
+    <UserControl.Resources>
+        <Style x:Key="ValueTextBlockStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="Margin" Value="0,0,0,10" />
+        </Style>
+    </UserControl.Resources>
+    <StackPanel VerticalAlignment="Top">
+        <TextBlock Text="TITLE" />
+        <TextBlock Text="{Binding Title}" Style="{StaticResource ValueTextBlockStyle}" />
+        <TextBlock Text="PRODUCT" />
+        <TextBlock Text="{Binding Product}" Style="{StaticResource ValueTextBlockStyle}" />
+        <TextBlock Text="DESCRIPTION" />
+        <TextBlock Text="{Binding Description}" Style="{StaticResource ValueTextBlockStyle}" />
+        <TextBlock Text="PRODUCT VERSION" />
+        <TextBlock Text="{Binding ProductVersion}" Style="{StaticResource ValueTextBlockStyle}" />
+        <TextBlock Text="FILE VERSION" />
+        <TextBlock Text="{Binding FileVersion}" Style="{StaticResource ValueTextBlockStyle}" />
+        <TextBlock Text="INFORMATIONAL VERSION" />
+        <TextBlock Text="{Binding InformationalVersion}" Style="{StaticResource ValueTextBlockStyle}" />
+        <TextBlock Text="COMPANY" />
+        <TextBlock Text="{Binding Company}" Style="{StaticResource ValueTextBlockStyle}" />
+        <TextBlock Text="COPYRIGHT" />
+        <TextBlock Text="{Binding Copyright}" Style="{StaticResource ValueTextBlockStyle}" />
+    </StackPanel>
 </UserControl>

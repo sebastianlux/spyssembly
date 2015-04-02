@@ -7,43 +7,22 @@ using AssemblyInfo.Extensions;
 using AssemblyInfo.ViewModels;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
+using GalaSoft.MvvmLight.Messaging;
+using System.ComponentModel.Composition;
 
 namespace AssemblyInfo
 {
+    [Export]
     public class MainWindowViewModel : ViewModelBase
     {
         private Assembly assembly = null;
 
-        public MainWindowViewModel()
+        [ImportingConstructor]
+        public MainWindowViewModel(DropContainerViewModel dropContainerViewModel,
+            AssemblyInfoViewModel assemblyInfoViewModel)
         {
-            AssemblyInfoViewModel = new AssemblyInfoViewModel();
-            DropContainerViewModel = new DropContainerViewModel();
-            DropContainerViewModel.PropertyChanged += async (sender, args) =>
-                                                      {
-                                                          if (args.PropertyName == "FilePath")
-                                                          {
-                                                              await AssemblyInfoViewModel.ReadAssemblyAsync(DropContainerViewModel.FilePath);
-                                                          }
-                                                      };
-        }
-
-        public RelayCommand<DragEventArgs> DropCommand { get; private set; }
-
-        private async void OnDrop(DragEventArgs dragEventArgs)
-        {
-            if (dragEventArgs.Data.GetDataPresent(DataFormats.FileDrop))
-            {
-                if ((dragEventArgs.Effects & DragDropEffects.Copy) == DragDropEffects.Copy)
-                {
-                    var files = (String[])dragEventArgs.Data.GetData(DataFormats.FileDrop);
-
-                    if (files.Length == 1)
-                    {
-                        await AssemblyInfoViewModel.ReadAssemblyAsync(files.First());
-                    }
-   
-                }
-            }   
+            AssemblyInfoViewModel = assemblyInfoViewModel;
+            DropContainerViewModel = dropContainerViewModel;
         }
 
         public AssemblyInfoViewModel AssemblyInfoViewModel { get; private set; }

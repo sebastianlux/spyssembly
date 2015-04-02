@@ -3,9 +3,12 @@ using System.Linq;
 using System.Windows;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
+using GalaSoft.MvvmLight.Messaging;
+using System.ComponentModel.Composition;
 
 namespace AssemblyInfo.ViewModels
 {
+    [Export]
     public class DropContainerViewModel : ViewModelBase
     {
         private String filePath;
@@ -38,6 +41,7 @@ namespace AssemblyInfo.ViewModels
                     if (files.Length == 1)
                     {
                         FilePath = files.First();
+                        Messenger.Default.Send<String>(FilePath);
                     }
 
                 }
