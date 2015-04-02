@@ -7,7 +7,12 @@ namespace AssemblyInfo.Extensions
     {
         public static String GetVersion(this Assembly assembly)
         {
-            return assembly.GetAttributeValue<AssemblyVersionAttribute, String>(attribute => attribute.Version);
+            if (assembly != null)
+            {
+                return assembly.GetName().Version.ToString();
+            }
+
+            return null;
         }
 
         public static String GetFileVersion(this Assembly assembly)
@@ -28,6 +33,36 @@ namespace AssemblyInfo.Extensions
         public static String GetConfiguration(this Assembly assembly)
         {
             return assembly.GetAttributeValue<AssemblyConfigurationAttribute, String>(attribute => attribute.Configuration);
+        }
+
+        public static String GetDescription(this Assembly assembly)
+        {
+            return assembly.GetAttributeValue<AssemblyDescriptionAttribute, String>(attribute => attribute.Description);
+        }
+
+        public static String GetCopyright(this Assembly assembly)
+        {
+            return assembly.GetAttributeValue<AssemblyCopyrightAttribute, String>(attribute => attribute.Copyright);
+        }
+
+        public static String GetTitle(this Assembly assembly)
+        {
+            return assembly.GetAttributeValue<AssemblyTitleAttribute, String>(attribute => attribute.Title);
+        }
+
+        public static String GetCulture(this Assembly assembly)
+        {
+            return assembly.GetAttributeValue<AssemblyCultureAttribute, String>(attribute => attribute.Culture);
+        }
+
+        public static String GetTrademark(this Assembly assembly)
+        {
+            return assembly.GetAttributeValue<AssemblyTrademarkAttribute, String>(attribute => attribute.Trademark);
+        }
+
+        public static String GetProduct(this Assembly assembly)
+        {
+            return assembly.GetAttributeValue<AssemblyProductAttribute, String>(attribute => attribute.Product);
         }
 
         private static TAttributeValueType GetAttributeValue<TAttribute, TAttributeValueType>(this Assembly assembly, Func<TAttribute, TAttributeValueType> func) where TAttribute : Attribute
