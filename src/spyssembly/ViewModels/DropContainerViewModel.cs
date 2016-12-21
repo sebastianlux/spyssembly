@@ -20,16 +20,6 @@ namespace AssemblyInfo.ViewModels
 
         public RelayCommand<DragEventArgs> DropCommand { get; private set; }
 
-        public String FilePath
-        {
-            get { return filePath; }
-            set
-            {
-                filePath = value;
-                RaisePropertyChanged();
-            }
-        }
-
         private void OnDrop(DragEventArgs dragEventArgs)
         {
             if (dragEventArgs.Data.GetDataPresent(DataFormats.FileDrop))
@@ -40,8 +30,7 @@ namespace AssemblyInfo.ViewModels
 
                     if (files.Length == 1)
                     {
-                        FilePath = files.First();
-                        Messenger.Default.Send<String>(FilePath);
+                        Messenger.Default.Send(files.First());
                     }
 
                 }
