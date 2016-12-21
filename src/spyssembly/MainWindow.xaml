@@ -12,7 +12,8 @@
                      MinWidth="300"
                      Height="400"
                      Width="300"
-                     Background="WhiteSmoke">
+                     Background="WhiteSmoke"
+                     SizeToContent="Height">
     <mahApps:MetroWindow.Resources>
         <converter:BooleanToVisibilityConverter x:Key="TrueToVisibleConverter"
                                                 True="Visible"
@@ -21,15 +22,15 @@
                                                 True="Collapsed"
                                                 False="Visible" />
     </mahApps:MetroWindow.Resources>
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <Grid Background="Transparent"
-              Margin="10">
-            <views:AssemblyInfoView DataContext="{Binding AssemblyInfoViewModel}"
-                                    Visibility="{Binding HasLoaded, Converter={StaticResource TrueToVisibleConverter}}" />
+    <Grid Background="Transparent"
+          Margin="10">
+        <views:AssemblyInfoView DataContext="{Binding AssemblyInfoViewModel}"
+                                Visibility="{Binding HasLoaded, Converter={StaticResource TrueToVisibleConverter}}" />
 
-            <views:DropHintView Visibility="{Binding AssemblyInfoViewModel.HasLoaded, Converter={StaticResource TrueToCollapsedConverter}}" />
+        <views:DropContainerView DataContext="{Binding DropContainerViewModel}" />
 
-            <views:DropContainerView DataContext="{Binding DropContainerViewModel}" />
-        </Grid>
-    </ScrollViewer>
+        <Border Visibility="{Binding AssemblyInfoViewModel.HasLoaded, Converter={StaticResource TrueToCollapsedConverter}}">
+            <views:WelcomeView DataContext="{Binding WelcomeViewModel}" />
+        </Border>
+    </Grid>
 </mahApps:MetroWindow>

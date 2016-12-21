@@ -8,9 +8,11 @@ namespace spyssembly
     public class MainWindowViewModel : ViewModelBase
     {
         [ImportingConstructor]
-        public MainWindowViewModel(DropContainerViewModel dropContainerViewModel,
-            AssemblyInfoViewModel assemblyInfoViewModel)
+        public MainWindowViewModel(WelcomeViewModel welcomeViewModel, 
+                                    DropContainerViewModel dropContainerViewModel,
+                                    AssemblyInfoViewModel assemblyInfoViewModel)
         {
+            WelcomeViewModel = welcomeViewModel;
             AssemblyInfoViewModel = assemblyInfoViewModel;
             DropContainerViewModel = dropContainerViewModel;
         }
@@ -18,5 +20,7 @@ namespace spyssembly
         public AssemblyInfoViewModel AssemblyInfoViewModel { get; private set; }
 
         public DropContainerViewModel DropContainerViewModel { get; private set; }
+
+        public WelcomeViewModel WelcomeViewModel { get; private set; }
     }
 }

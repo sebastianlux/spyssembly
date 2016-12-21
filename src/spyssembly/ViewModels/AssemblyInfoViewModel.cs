@@ -6,6 +6,7 @@ using spyssembly.Extensions;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
 using System.ComponentModel.Composition;
+using System.IO;
 
 namespace spyssembly.ViewModels
 {
@@ -30,6 +31,20 @@ namespace spyssembly.ViewModels
             {
                 this.hasLoaded = value;
                 RaisePropertyChanged("HasLoaded");
+            }
+        }
+
+        public String AssemblyFileName
+        {
+            get
+            {
+                var location = this.assembly?.Location;
+                if (!String.IsNullOrEmpty(location))
+                {
+                    return Path.GetFileName(location);
+                }
+                return null;
+
             }
         }
 

@@ -47,6 +47,11 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0"
+                   Grid.ColumnSpan="3"
+                   Text="{Binding AssemblyFileName}"
+                   Style="{StaticResource LabelTextBlockStyle}"
+                   FontWeight="Bold" />
         <TextBlock Grid.Row="1"
                    Text="Title"
                    Style="{StaticResource LabelTextBlockStyle}" />

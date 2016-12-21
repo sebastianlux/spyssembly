@@ -3,9 +3,9 @@
     /// <summary>
     /// Interaction logic for DropHintView.xaml
     /// </summary>
-    public partial class DropHintView
+    public partial class WelcomeView
     {
-        public DropHintView()
+        public WelcomeView()
         {
             InitializeComponent();
         }
