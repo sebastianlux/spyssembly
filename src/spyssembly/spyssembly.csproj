@@ -77,6 +77,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converter\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converter\NullValueConverter.cs" />
     <Compile Include="ViewModels\AssemblyInfoViewModel.cs" />
     <Compile Include="ViewModels\DropContainerViewModel.cs" />
@@ -85,6 +86,9 @@
     </Compile>
     <Compile Include="Views\DropContainerView.xaml.cs">
       <DependentUpon>DropContainerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DropHintView.xaml.cs">
+      <DependentUpon>DropHintView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -104,6 +108,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DropContainerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DropHintView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

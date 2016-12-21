@@ -13,10 +13,24 @@ namespace AssemblyInfo.ViewModels
     public class AssemblyInfoViewModel : ViewModelBase
     {
         private Assembly assembly = null;
+        private Boolean hasLoaded;
 
         public AssemblyInfoViewModel()
         {
             Messenger.Default.Register<String>(this, async (filePath) => await OnAssemblyChangedAsync(filePath));
+        }
+
+        public Boolean HasLoaded
+        {
+            get
+            {
+                return this.hasLoaded;
+            }
+            set
+            {
+                this.hasLoaded = value;
+                RaisePropertyChanged("HasLoaded");
+            }
         }
 
         public String Title
@@ -82,6 +96,9 @@ namespace AssemblyInfo.ViewModels
         private async Task OnAssemblyChangedAsync(String filePath)
         {
             this.assembly = await ReadAssemblyAsync(filePath);
+
+            HasLoaded = true;
+            RaisePropertyChanged("HasLoaded");
             RaisePropertyChanged(String.Empty);
         }
 
