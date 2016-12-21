@@ -5,7 +5,7 @@ namespace AssemblyInfo.Extensions
 {
     public static class AssemblyExtensions
     {
-        public static String GetVersion(this Assembly assembly)
+        public static String GetProductVersion(this Assembly assembly)
         {
             if (assembly != null)
             {
@@ -15,57 +15,62 @@ namespace AssemblyInfo.Extensions
             return null;
         }
 
+        public static String GetVersion(this Assembly assembly)
+        {
+            return assembly.GetAttributeValue<AssemblyVersionAttribute>(attribute => attribute.Version);
+        }
+
         public static String GetFileVersion(this Assembly assembly)
         {
-            return assembly.GetAttributeValue<AssemblyFileVersionAttribute, String>(attribute => attribute.Version);
+            return assembly.GetAttributeValue<AssemblyFileVersionAttribute>(attribute => attribute.Version);
         }
 
         public static String GetInformationalVersion(this Assembly assembly)
         {
-            return assembly.GetAttributeValue<AssemblyInformationalVersionAttribute, String>(attribute => attribute.InformationalVersion);
+            return assembly.GetAttributeValue<AssemblyInformationalVersionAttribute>(attribute => attribute.InformationalVersion);
         }
 
         public static String GetCompany(this Assembly assembly)
         {
-            return assembly.GetAttributeValue<AssemblyCompanyAttribute, String>(attribute => attribute.Company);
+            return assembly.GetAttributeValue<AssemblyCompanyAttribute>(attribute => attribute.Company);
         }
 
         public static String GetConfiguration(this Assembly assembly)
         {
-            return assembly.GetAttributeValue<AssemblyConfigurationAttribute, String>(attribute => attribute.Configuration);
+            return assembly.GetAttributeValue<AssemblyConfigurationAttribute>(attribute => attribute.Configuration);
         }
 
         public static String GetDescription(this Assembly assembly)
         {
-            return assembly.GetAttributeValue<AssemblyDescriptionAttribute, String>(attribute => attribute.Description);
+            return assembly.GetAttributeValue<AssemblyDescriptionAttribute>(attribute => attribute.Description);
         }
 
         public static String GetCopyright(this Assembly assembly)
         {
-            return assembly.GetAttributeValue<AssemblyCopyrightAttribute, String>(attribute => attribute.Copyright);
+            return assembly.GetAttributeValue<AssemblyCopyrightAttribute>(attribute => attribute.Copyright);
         }
 
         public static String GetTitle(this Assembly assembly)
         {
-            return assembly.GetAttributeValue<AssemblyTitleAttribute, String>(attribute => attribute.Title);
+            return assembly.GetAttributeValue<AssemblyTitleAttribute>(attribute => attribute.Title);
         }
 
         public static String GetCulture(this Assembly assembly)
         {
-            return assembly.GetAttributeValue<AssemblyCultureAttribute, String>(attribute => attribute.Culture);
+            return assembly.GetAttributeValue<AssemblyCultureAttribute>(attribute => attribute.Culture);
         }
 
         public static String GetTrademark(this Assembly assembly)
         {
-            return assembly.GetAttributeValue<AssemblyTrademarkAttribute, String>(attribute => attribute.Trademark);
+            return assembly.GetAttributeValue<AssemblyTrademarkAttribute>(attribute => attribute.Trademark);
         }
 
         public static String GetProduct(this Assembly assembly)
         {
-            return assembly.GetAttributeValue<AssemblyProductAttribute, String>(attribute => attribute.Product);
+            return assembly.GetAttributeValue<AssemblyProductAttribute>(attribute => attribute.Product);
         }
 
-        private static TAttributeValueType GetAttributeValue<TAttribute, TAttributeValueType>(this Assembly assembly, Func<TAttribute, TAttributeValueType> func) where TAttribute : Attribute
+        private static String GetAttributeValue<TAttribute>(this Assembly assembly, Func<TAttribute, String> func) where TAttribute : Attribute
         {
             if (assembly != null)
             {
@@ -77,7 +82,7 @@ namespace AssemblyInfo.Extensions
                 }
             }
 
-            return default(TAttributeValueType);
+            return null;
         }
     }
 }
