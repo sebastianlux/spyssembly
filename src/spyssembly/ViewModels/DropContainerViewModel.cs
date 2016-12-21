@@ -6,7 +6,7 @@ using GalaSoft.MvvmLight.CommandWpf;
 using GalaSoft.MvvmLight.Messaging;
 using System.ComponentModel.Composition;
 
-namespace AssemblyInfo.ViewModels
+namespace spyssembly.ViewModels
 {
     [Export]
     public class DropContainerViewModel : ViewModelBase

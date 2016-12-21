@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace AssemblyInfo.Extensions
+namespace spyssembly.Extensions
 {
     public static class AssemblyExtensions
     {

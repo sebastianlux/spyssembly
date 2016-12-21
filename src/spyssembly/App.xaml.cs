@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.Composition.Hosting;
 using System.Windows;
 
-namespace AssemblyInfo
+namespace spyssembly
 {
     /// <summary>
     /// Interaction logic for App.xaml

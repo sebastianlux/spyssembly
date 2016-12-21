@@ -2,12 +2,12 @@
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
-using AssemblyInfo.Extensions;
+using spyssembly.Extensions;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
 using System.ComponentModel.Composition;
 
-namespace AssemblyInfo.ViewModels
+namespace spyssembly.ViewModels
 {
     [Export]
     public class AssemblyInfoViewModel : ViewModelBase

@@ -1,8 +1,8 @@
-﻿using AssemblyInfo.ViewModels;
+﻿using spyssembly.ViewModels;
 using GalaSoft.MvvmLight;
 using System.ComponentModel.Composition;
 
-namespace AssemblyInfo
+namespace spyssembly
 {
     [Export]
     public class MainWindowViewModel : ViewModelBase
