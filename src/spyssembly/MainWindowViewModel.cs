@@ -1,13 +1,5 @@
-﻿using System;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
-using System.Windows;
-using AssemblyInfo.Extensions;
-using AssemblyInfo.ViewModels;
+﻿using AssemblyInfo.ViewModels;
 using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.CommandWpf;
-using GalaSoft.MvvmLight.Messaging;
 using System.ComponentModel.Composition;
 
 namespace AssemblyInfo
@@ -15,8 +7,6 @@ namespace AssemblyInfo
     [Export]
     public class MainWindowViewModel : ViewModelBase
     {
-        private Assembly assembly = null;
-
         [ImportingConstructor]
         public MainWindowViewModel(DropContainerViewModel dropContainerViewModel,
             AssemblyInfoViewModel assemblyInfoViewModel)
