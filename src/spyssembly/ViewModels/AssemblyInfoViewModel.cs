@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using AssemblyInfo.Extensions;
 using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.CommandWpf;
 using GalaSoft.MvvmLight.Messaging;
 using System.ComponentModel.Composition;
 
@@ -14,19 +13,34 @@ namespace AssemblyInfo.ViewModels
     public class AssemblyInfoViewModel : ViewModelBase
     {
         private Assembly assembly = null;
+        private Boolean hasLoaded;
 
         public AssemblyInfoViewModel()
         {
-            Messenger.Default.Register<String>(this, OnAssemblyChanged);
+            Messenger.Default.Register<String>(this, OnAssemblyChangedAsync);
         }
 
-        private async void OnAssemblyChanged(string filePath)
+        private async void OnAssemblyChangedAsync(String filePath)
         {
             this.assembly = await ReadAssemblyAsync(filePath);
+            HasLoaded = true;
             RaisePropertyChanged(String.Empty);
         }
 
-        public Task<Assembly> ReadAssemblyAsync(string location)
+        public Boolean HasLoaded
+        {
+            get
+            {
+                return this.hasLoaded;
+            }
+            set
+            {
+                this.hasLoaded = value;
+                RaisePropertyChanged("HasLoaded");
+            }
+        }
+
+        public Task<Assembly> ReadAssemblyAsync(String location)
         {
             return Task.Run(() => Assembly.LoadFrom(location));
         }
@@ -44,6 +58,11 @@ namespace AssemblyInfo.ViewModels
         public String Configuration
         {
             get { return this.assembly.GetConfiguration(); }
+        }
+
+        public String Company
+        {
+            get { return this.assembly.GetCompany(); }
         }
 
         public String Product
@@ -68,7 +87,12 @@ namespace AssemblyInfo.ViewModels
 
         public String ProductVersion
         {
-            get { return this.assembly.GetVersion(); }
+            get { return this.assembly.GetProductVersion(); }
+        }
+
+        public String Version
+        {
+            get { return this.assembly.GetProductVersion(); }
         }
 
         public String FileVersion
