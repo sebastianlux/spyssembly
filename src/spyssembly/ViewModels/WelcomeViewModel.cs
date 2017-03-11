@@ -9,8 +9,13 @@ namespace spyssembly.ViewModels
 {
     [Export]
     public class WelcomeViewModel : ViewModelBase
-    {   
-        public ICommand OpenCommand { get => new RelayCommand(OnOpen); }
+    {
+        public WelcomeViewModel()
+        {
+            OpenCommand = new RelayCommand(OnOpen);
+        }
+
+        public ICommand OpenCommand { get; }
 
         private void OnOpen()
         {
